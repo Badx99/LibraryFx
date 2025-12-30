@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+
+<VBox prefHeight="650.0" prefWidth="800.0" spacing="25.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ui.DashboardStatsController">
+    <stylesheets>
+        <URL value="@../style.css" />
+    </stylesheets>
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <children>
+                <Label styleClass="header-label" text="Tableau de Bord - Statistiques" />
+                <javafx.scene.layout.Region HBox.hgrow="ALWAYS" />
+                <javafx.scene.control.Button onAction="#handleRefresh" styleClass="btn-primary" text="Actualiser" />
+            </children>
+        </HBox>
+        
+        <GridPane hgap="20.0" vgap="20.0">
+            <children>
+                <!-- Book Card -->
+                <VBox prefHeight="100.0" prefWidth="180.0" styleClass="card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <children>
+                        <Label text="Total Livres" styleClass="label-muted" />
+                        <Label fx:id="totalBooksLabel" text="0">
+                            <font>
+                                <Font name="System Bold" size="28.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="availableBooksLabel" text="0 disponibles" style="-fx-text-fill: -fx-base-accent;" />
+                    </children>
+                </VBox>
+                
+                <!-- Member Card -->
+                <VBox prefHeight="100.0" prefWidth="180.0" styleClass="card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <children>
+                        <Label text="Adhérents" styleClass="label-muted" />
+                        <Label fx:id="totalMembersLabel" text="0">
+                            <font>
+                                <Font name="System Bold" size="28.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="activeMembersLabel" text="0 actifs" style="-fx-text-fill: -fx-base-primary;" />
+                    </children>
+                </VBox>
+                
+                <!-- Borrow Card -->
+                <VBox prefHeight="100.0" prefWidth="180.0" styleClass="card" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <children>
+                        <Label text="Emprunts en cours" styleClass="label-muted" />
+                        <Label fx:id="currentBorrowsLabel" text="0">
+                            <font>
+                                <Font name="System Bold" size="28.0" />
+                            </font>
+                        </Label>
+                        <Label text="Actuellement" style="-fx-text-fill: -fx-base-warning;" />
+                    </children>
+                </VBox>
+                
+                <!-- Late Card -->
+                <VBox prefHeight="100.0" prefWidth="180.0" styleClass="card" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                    <children>
+                        <Label text="Retards" styleClass="label-muted" />
+                        <Label fx:id="lateBorrowsLabel" text="0">
+                            <font>
+                                <Font name="System Bold" size="28.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="totalFinesLabel" text="0.00 € d'amendes" style="-fx-text-fill: -fx-base-danger;" />
+                    </children>
+                </VBox>
+            </children>
+         <columnConstraints>
+            <javafx.scene.layout.ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <javafx.scene.layout.ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <javafx.scene.layout.ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <javafx.scene.layout.ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <javafx.scene.layout.RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+        </GridPane>
+        
+        <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+            <children>
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="Evolution des Emprunts" style="-fx-font-weight: bold;" />
+                        <BarChart fx:id="borrowsChart" legendVisible="true" prefHeight="300.0">
+                          <xAxis>
+                            <CategoryAxis label="Mois" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="Nombre" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                    </children>
+                </VBox>
+                
+                <VBox styleClass="card" prefWidth="300.0">
+                    <children>
+                        <Label text="Distribution par Catégorie" style="-fx-font-weight: bold;" />
+                        <PieChart fx:id="categoryChart" labelsVisible="true" legendVisible="true" prefHeight="300.0" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+</VBox>

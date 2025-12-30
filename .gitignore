@@ -1,0 +1,39 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Ignored default folder with query files
+/queries/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# --- Java & Maven ---
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+.mvn/wrapper/desktop.ini
+**/desktop.ini
+
+# --- OS spécifiques ---
+.DS_Store
+Thumbs.db
+
+
+# --- Environnement ---
+.env
+
+src/main/resources/application.properties
+**/application.properties
